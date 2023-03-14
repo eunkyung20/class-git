@@ -2,6 +2,7 @@ package com.itwillbs.domain;
 
 import java.sql.Timestamp;
 
+// 데이터를 담아서 전달
 public class MemberDTO {
 	private String id;
 	private String pass;

@@ -1,6 +1,7 @@
 package com.itwillbs.dao;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -80,6 +81,26 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println("MemberDAOImpl updateMember()");
 		
 		sqlSession.update(namespace+".updateMember", memberDTO);
+	}
+
+
+
+	@Override
+	public void deleteMember(MemberDTO memberDTO) {
+		System.out.println("MemberDAOImpl deleteMember()");
+		
+		sqlSession.delete(namespace+".deleteMember", memberDTO);	
+		
+	}
+
+
+
+	@Override
+	public List<MemberDTO> getMemberList() {
+		System.out.println("MemberDAOImpl getMemberList()");
+		
+		// 리스트형으로 리턴 => selectList
+		return sqlSession.selectList(namespace+".getMemberList");
 	}
 
 }

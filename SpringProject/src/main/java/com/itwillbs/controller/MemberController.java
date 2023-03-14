@@ -1,5 +1,7 @@
 package com.itwillbs.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -234,6 +236,7 @@ public class MemberController {
 			System.out.println("아이디 비밀번호 일치");
 			// 수정작업
 			memberService.updateMember(memberDTO);
+			
 			// 주소 변경되면서 로그인 페이지로 이동 
 			// response.sendRedirect("/member/main");
 			return "redirect:/member/main";
@@ -259,22 +262,49 @@ public class MemberController {
 	//가상주소 http://localhost:8080/myweb/member/deletePro
 	// 자동으로 가상주소 뽑아옴 /member/deletePro
 	@RequestMapping(value = "/member/deletePro", method = RequestMethod.POST)
-	public String deletePro(MemberDTO memberDTO) {
+	public String deletePro(MemberDTO memberDTO, HttpSession session) {
 		System.out.println("MemberController deletePro()");
 		// 디비 삭제 처리 => 처리 => 디비 자바 메서드 호출
 		System.out.println(memberDTO.getId());
 		System.out.println(memberDTO.getPass());
-		System.out.println(memberDTO.getName());
+//		System.out.println(memberDTO.getName());
 		
-		// 주소 변경되면서 메인 페이지로 이동 
-		// response.sendRedirect("/member/main");
-		return "redirect:/member/main";
+		MemberDTO memberDTO2=memberService.userCheck(memberDTO);
+		
+		if(memberDTO2 != null) {
+			//아이디 비밀번호 일치
+			System.out.println("아이디 비밀번호 일치");
+			
+			// 삭제작업
+			memberService.deleteMember(memberDTO);
+			
+			// 세션 초기화
+			session.invalidate();
+			
+			// 주소 변경되면서 로그인 페이지로 이동 
+			// response.sendRedirect("/member/main");
+			return "redirect:/member/main";
+			
+		}else {
+			// 아이디 비밀번호 틀림
+			System.out.println("아이디 비밀번호 틀림");
+			
+//			member/msg.jsp 만들어서 
+			// 아이디 비밀번호 틀림 메시지 출력, 뒤로이동
+			return "member/msg";
+		}
 	}
 	
 	//가상주소 http://localhost:8080/myweb/member/list
 	// 자동으로 가상주소 뽑아옴 /member/list
 	@RequestMapping(value = "/member/list", method = RequestMethod.GET)
-	public String list() {
+	public String list(Model model) {
+		
+		// 디비작업
+		List<MemberDTO> memberList = memberService.getMemberList();
+		
+		model.addAttribute("memberList", memberList);
+		
 		// 주소변경 없이 이동
 		// /WEB-INF/views/member/list.jsp
 		return "member/list";

@@ -36,6 +36,9 @@
     	where id = #{id}
     </delete>
     
+    <select id="getMemberList" resultType="com.itwillbs.domain.MemberDTO">
+    	select * from members
+    </select>
 </mapper>
 
 

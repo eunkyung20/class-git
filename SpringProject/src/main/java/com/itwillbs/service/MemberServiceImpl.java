@@ -1,5 +1,7 @@
 package com.itwillbs.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -71,6 +73,21 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println("MemberServiceImpl updateMember()");
 		
 		memberDAO.updateMember(memberDTO);
+	}
+
+	@Override
+	public void deleteMember(MemberDTO memberDTO) {
+		System.out.println("MemberServiceImpl deleteMember()");
+		
+		memberDAO.deleteMember(memberDTO);		
+		
+	}
+
+	@Override
+	public List<MemberDTO> getMemberList() {
+		System.out.println("MemberServiceImpl getMemberList()");
+		
+		return memberDAO.getMemberList();
 	}
 	
 	
