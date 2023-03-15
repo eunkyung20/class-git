@@ -19,10 +19,10 @@
 	<c:redirect url="/member/login"></c:redirect>
 </c:if>
 ${sessionScope.id }님 로그인 하셨습니다. 
-<a href="${pageContext.request.contextPath }/member/logout">로그아웃</a><br>
-<a href="${pageContext.request.contextPath }/member/info">회원정보조회</a><br>
-<a href="${pageContext.request.contextPath }/member/update">회원정보수정</a><br>
-<a href="${pageContext.request.contextPath }/member/delete">회원정보삭제</a><br>
+<a href="${pageContext.request.contextPath}/member/logout">로그아웃</a><br>
+<a href="${pageContext.request.contextPath}/member/info">회원정보조회</a><br>
+<a href="${pageContext.request.contextPath}/member/update">회원정보수정</a><br>
+<a href="${pageContext.request.contextPath}/member/delete">회원정보삭제</a><br>
 <%
 // if(id!=null){
 // 	if(id.equals("admin")){
@@ -37,6 +37,10 @@ ${sessionScope.id }님 로그인 하셨습니다.
 	<a href="${pageContext.request.contextPath}/member/list">회원목록</a><br>
 	</c:if>
 </c:if>
+
+<a href="${pageContext.request.contextPath}/board/write">글쓰기</a><br>
+<a href="${pageContext.request.contextPath}/board/list">글목록</a><br>
+<a href="${pageContext.request.contextPath}/board/fwrite">첨부파일 글쓰기</a><br>
 
 </body>
 </html>
