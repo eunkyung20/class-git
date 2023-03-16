@@ -1,6 +1,7 @@
 <%-- <%@page import="com.itwillbs.board.db.BoardDTO"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,38 +26,35 @@
 %>
 <h1>글내용 [로그인 : ${sessionScope.id}]</h1>
 <table border="1">
-<tr><td>글번호</td><td>${boardDTO.num}</td></tr>
-<tr><td>작성자</td><td>${boardDTO.name}</td></tr>
-<tr><td>글쓴날짜</td><td>${boardDTO.date}</td></tr>
-<tr><td>조회수</td><td>${boardDTO.readcount}</td></tr>
-<tr><td>글제목</td><td>${boardDTO.subject}</td></tr>
+	<tr><td>글번호</td><td>${boardDTO.num}</td></tr>
+	<tr><td>작성자</td><td>${boardDTO.name}</td></tr>
+	<tr><td>글쓴날짜</td><td>${boardDTO.date}</td></tr>
+	<tr><td>조회수</td><td>${boardDTO.readcount}</td></tr>
+	<tr><td>글제목</td><td>${boardDTO.subject}</td></tr>
 <!-- <tr><td>첨부파일</td> -->
 <%-- <td><a href="upload/<%//=dto.getFile() %>" download>${boardDTO.file}</a> --%>
 <%-- <img src="upload/<%//=dto.getFile() %>" width="100" height="100"> --%>
 <!-- </td></tr> -->
-<tr><td>글내용</td><td>${boardDTO.content}</td></tr>
-<tr><td colspan="2">
-<%
-// 로그인 => 세션값 있음
-// if(id != null){
-// 	// 세션값  , 글쓴이  => 일치 => 자기자신 쓴 글(글수정, 글삭제 보이기)
-// 	if(id.equals(dto.getName())){
-		%>
-<input type="button" value="글수정"
- onclick="location.href='BoardUpdateForm.bo?num=<%//=dto.getNum()%>'">
- <input type="button" value="글삭제"
- onclick="location.href='BoardDeletePro.bo?num=<%//=dto.getNum()%>'">	
- 	
- 	<input type="button" value="파일 글수정"
- onclick="location.href='FileBoardUpdateForm.bo?num=<%//=dto.getNum()%>'">
-		<%
-// 	}
-// }
-%>
+	<tr><td>글내용</td><td>${boardDTO.content}</td></tr>
+	<tr><td colspan="2">
 
-<input type="button" value="글목록"
- onclick="location.href='${pageContext.request.contextPath}/board/list'">
- </td></tr>
+<c:if test="${ ! empty sessionScope.id }"> 
+ 	<c:if test="${sessionScope.id eq boardDTO.name }"> <%-- == eq --%>
+ 	
+		<input type="button" value="글수정"
+ 			onclick="location.href='${pageContext.request.contextPath}/board/update?num=${boardDTO.num}'">
+ 		<input type="button" value="글삭제"
+ 			onclick="location.href='${pageContext.request.contextPath}/board/delete?num=${boardDTO.num}'">	
+ 	
+ 		<input type="button" value="파일 글수정"
+			 onclick="location.href='${pageContext.request.contextPath}/board/fupdate?num=${boardDTO.num}'">
+			 
+	</c:if>
+</c:if>
+
+		<input type="button" value="글목록"
+ 			onclick="location.href='${pageContext.request.contextPath}/board/list'">
+ 	</td></tr>
 </table>
 </body>
 </html>

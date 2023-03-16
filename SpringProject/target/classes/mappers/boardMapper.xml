@@ -35,15 +35,15 @@
          where num = #{num}       
     </select>
         
-<!--     <update id="updateBoard"> -->
-<!--     	update members set name = #{name} -->
-<!--     	where id = #{id} -->
-<!--     </update> -->
+    <update id="updateBoard">
+    	update board set subject = #{subject}, content = #{content}
+    	where num = #{num}
+    </update>
     
-<!--     <delete id="deleteBoard"> -->
-<!--     	delete from members -->
-<!--     	where id = #{id} -->
-<!--     </delete> -->
+    <delete id="deleteBoard">
+    	delete from board
+    	where num = #{num}
+    </delete>
     
 <!--     <select id="getBoardList" resultType="com.itwillbs.domain.BoardDTO"> -->
 <!--     	select * from members -->

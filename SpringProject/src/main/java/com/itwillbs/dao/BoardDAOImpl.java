@@ -48,6 +48,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int getBoardCount() {
 		System.out.println("BoardDAOImpl getBoardCount()");
+		
 		return sqlSession.selectOne(namespace+".getBoardCount"); //return값이 int형으로 하나
 	}
 
@@ -56,6 +57,21 @@ public class BoardDAOImpl implements BoardDAO{
 		System.out.println("BoardDAOImpl getBoard()");
 		
 		return sqlSession.selectOne(namespace+".getBoard",num); //num값을 넘기겠다
+	}
+
+
+	@Override
+	public void updateBoard(BoardDTO boardDTO) {
+		System.out.println("BoardDAOImpl updateBoard()");
+		
+		sqlSession.update(namespace+".updateBoard", boardDTO);
+	}
+
+	@Override
+	public void deleteBoard(int num) {
+		System.out.println("BoardDAOImpl deleteBoard()");
+		
+		sqlSession.delete(namespace+".deleteBoard", num);
 	}
 
 }

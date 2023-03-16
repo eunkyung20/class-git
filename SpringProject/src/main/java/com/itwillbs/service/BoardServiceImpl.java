@@ -67,7 +67,22 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardDTO getBoard(int num) {
 		System.out.println("BoardServiceImpl getBoard()");
+		
 		return boardDAO.getBoard(num);
+	}
+	
+	@Override
+	public void updateBoard(BoardDTO boardDTO) {
+		System.out.println("BoardServiceImpl updateBoard()");
+		
+		boardDAO.updateBoard(boardDTO);
+	}
+
+	@Override
+	public void deleteBoard(int num) {
+		System.out.println("BoardServiceImpl deleteBoard()");
+		
+		boardDAO.deleteBoard(num);
 	}
 	
 }
