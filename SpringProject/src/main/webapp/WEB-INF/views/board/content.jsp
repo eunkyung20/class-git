@@ -31,10 +31,10 @@
 	<tr><td>글쓴날짜</td><td>${boardDTO.date}</td></tr>
 	<tr><td>조회수</td><td>${boardDTO.readcount}</td></tr>
 	<tr><td>글제목</td><td>${boardDTO.subject}</td></tr>
-<!-- <tr><td>첨부파일</td> -->
-<%-- <td><a href="upload/<%//=dto.getFile() %>" download>${boardDTO.file}</a> --%>
-<%-- <img src="upload/<%//=dto.getFile() %>" width="100" height="100"> --%>
-<!-- </td></tr> -->
+	<tr><td>첨부파일</td>
+		<td><a href="${pageContext.request.contextPath}/resources/upload/${boardDTO.file}" download>${boardDTO.file}</a>
+		<img src="${pageContext.request.contextPath}/resources/upload/${boardDTO.file}" width="100" height="100">
+		</td></tr>
 	<tr><td>글내용</td><td>${boardDTO.content}</td></tr>
 	<tr><td colspan="2">
 

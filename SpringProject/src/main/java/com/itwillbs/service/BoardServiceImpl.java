@@ -84,5 +84,12 @@ public class BoardServiceImpl implements BoardService{
 		
 		boardDAO.deleteBoard(num);
 	}
+
+	@Override
+	public void fupdateBoard(BoardDTO boardDTO) {
+		System.out.println("BoardServiceImpl fupdateBoard()");
+		
+		boardDAO.fupdateBoard(boardDTO);
+	}
 	
 }

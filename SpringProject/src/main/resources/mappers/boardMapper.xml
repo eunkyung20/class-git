@@ -44,7 +44,12 @@
     	delete from board
     	where num = #{num}
     </delete>
-    
+  
+     <update id="fupdateBoard">
+    	update board set subject = #{subject}, content = #{content}, file = #{file}
+    	where num = #{num}
+    </update>
+       
 <!--     <select id="getBoardList" resultType="com.itwillbs.domain.BoardDTO"> -->
 <!--     	select * from members -->
 <!--     </select> -->

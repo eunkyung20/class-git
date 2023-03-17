@@ -41,7 +41,7 @@
 물리적 경로 
 C:\Users\ITWILL\git\class-git\SpringProject\src\main\webapp\resources\upload -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\Users\ITWILL\git\class-git\SpringProject\src\main\webapp\resources\upload"></beans:constructor-arg>
+		<beans:constructor-arg value="C:\\Users\\ITWILL\\git\\class-git\\SpringProject\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
 	</beans:bean>
 	
 </beans:beans>
