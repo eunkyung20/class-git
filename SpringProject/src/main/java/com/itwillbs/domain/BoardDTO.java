@@ -17,7 +17,7 @@ public class BoardDTO {
 	public void setFile(String file) {
 		this.file = file;
 	}
-	
+	 
 	public int getNum() {
 		return num;
 	}
